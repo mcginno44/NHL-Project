@@ -1,0 +1,357 @@
+---
+title: "279 Project"
+format: html
+editor: visual
+---
+
+#### Research Project
+```{r}
+library(tidyverse)
+library(rvest)
+library(data.table)
+library(dplyr)
+```
+
+```{r}
+link = read_html(paste0("https://www.hockey-reference.com/leagues/stats.html"))
+
+table = link |>
+  html_elements("table") |> ## this code scrapes the seasonal averages from the data table
+  html_table() 
+df = table[[1]] |>
+  select("Season", "G","SA", "SV", "SV%", "GAA") 
+df = df[-c(21,42,63,84,105),] ## there is a blank column every 21 rows, so I had to remove each empty row
+df
+```
+
+```{r}
+library(ggplot2)
+scoring_df = df |>
+  mutate(avg_goals = as.double(G)) |>
+  mutate(year_id = as.integer(substring(Season,1,4))) |> ## had to change all columns to the correct class
+  filter(year_id >=1955) |> ## ensuring data from 1955-2023
+  mutate(sv = as.double(SV)) |> 
+  mutate(sa = as.double(SA)) |>
+  mutate(sv_pct = as.double(sv/sa)) |>
+  mutate(avg_goals_standard = scale(avg_goals), ## standardizing variables to compare them to one another
+         sv_pct_standard = scale(sv_pct), sa_standard = scale(sa))
+
+scoring_df ## same scoring_df used later on
+```
+
+#### Point Scoring Leader Numbers
+
+```{r}
+link3 = read_html(paste0("https://en.wikipedia.org/wiki/Art_Ross_Trophy"))
+
+tables = link3 |>
+  html_elements("table") |>
+  html_table()
+art_ross = tables[[2]] |>
+  mutate(pts = as.integer(Points)) |> ##changing column types
+  mutate(year = as.integer(substring(Season, 1,4))) |>
+  filter(year >=1955) |> ## making sure I only had data from 1955-2023
+  mutate(standard_pts = scale(pts)) |>
+  select(year, Winner, pts, standard_pts) 
+art_ross = art_ross[-50, ] ## erased an empty column from the canceled 2004-05 season
+art_ross
+```
+
+#### Leading Goalscorer Code
+
+```{r}
+years = as.character(1955:2023)
+years = years[years != "2005"] ## removing the canceled 2005 season
+goal_num = rep(NA,length(years))
+
+for(i in 1:length(years)){
+  link4 = paste0("https://www.hockey-reference.com/leagues/NHL_",years[i],".html")
+  page = read_html(link4)
+if(i%%20==0){
+  Sys.sleep(61) ## idea to get around site ban on automated scraping(more than 20 requests in a minute)
+}
+  
+season = page |> 
+  html_elements("p") |>
+  html_text2() 
+leader = str_subset(season, "Goals Leaders: .+") 
+goal_num[i] = str_extract(leader, "\\d+") ##scraping goal number, scraped name later in a different chunk
+}
+goal_df = data.frame(year = years, goal_num = goal_num)
+goal_df = goal_df |>
+  mutate(yearID = as.integer(year), goals_num = as.integer(goal_num)) |>
+  mutate(standard_goals = scale(goals_num)) |> ##changing column types and standardizing the goal_scored variable
+  select(yearID,goals_num,standard_goals)
+goal_df
+```
+
+#### Top 50 Defensemen Scoring Data
+
+```{r}
+years2 = 1955:2022
+years2 = years2[years2 != "2004"] ##removing the 2004-05 season
+full_years = rep(NA, length(years2))
+for(i in 1:length(years2)){
+  full_years[i] = paste0(years2[i], "-" , substr((years2[i]+1),3,4))
+}
+full_years = as.character(full_years) ## this site was tricky as its url featured "2021-22" as its year as opposed to just "2022", so I had to create a special list to iterate across
+d_men = rep(NA,length(full_years))
+df_list = list()
+for(i in 1:length(full_years)){
+link5 = paste0("https://www.quanthockey.com/nhl/seasons/",full_years[i],"-nhl-defensemen-stats.html")
+url5 = read_html(link5)
+
+d_men = url5 |>
+  html_elements("table") |>
+  html_table(header = FALSE) 
+d_men_df = rbindlist(d_men)
+d_men_df = d_men_df |>
+  mutate(year = full_years[i]) ## designating a year variable for the table
+d_men_df = d_men_df[-c(1,2),] ## eliminating empty rows at the top
+df_list[[i]] = d_men_df
+}
+
+final_df = rbindlist(df_list)
+final_df = final_df |>
+  select(X3,X7,X8,X10,year)
+colnames(final_df) = c("Name", "games_played", "goals", "points", "year") ##changing column names
+final_df = final_df |>
+  mutate(games = as.integer(games_played), gls = as.integer(goals), pts = as.integer(points)) |> ##changing column types again
+  mutate(yearID = as.integer(substr(year,1,4))) |> ## setting just the first 4 characters to be the year
+  select(Name, games, gls, pts, yearID)
+final_df ## this is several chunks put together, so there may be some redundancy in places
+```
+
+```{r}
+summary = final_df |>
+  group_by(yearID) |>
+  summarize(avg_games = mean(games), avg_gls = mean(gls), avg_pts = mean(pts),avg_ppg = avg_pts/avg_games, avg_gpg = avg_gls/avg_games) ## generating summary statistics like points per game and goals per game for defensemen
+summary
+```
+
+#### Top 50 Forward Scoring
+
+```{r}
+df_list2 = list()
+for(i in 1:length(full_years)){
+link5 = paste0("https://www.quanthockey.com/nhl/seasons/",full_years[i],"-nhl-forwards-stats.html")
+url5 = read_html(link5)
+
+forward = url5 |>
+  html_elements("table") |>
+  html_table(header = FALSE) ## essentially the same deal as with the defensemen above
+forward_df = rbindlist(forward)
+forward_df = forward_df |>
+  mutate(year = full_years[i])
+forward_df = forward_df[-c(1,2),]
+df_list2[[i]] = forward_df
+}
+
+final_df2 = rbindlist(df_list2)
+final_df2 = final_df2 |>
+  select(X3,X7,X8,X10,year)
+colnames(final_df2) = c("Name", "games_played", "goals", "points", "year")
+final_df2 = final_df2 |>
+  mutate(games = as.integer(games_played), gls = as.integer(goals), pts = as.integer(points)) |> 
+  mutate(yearID = as.integer(substr(year,1,4))) |>
+  select(Name, games, gls, pts, yearID)
+final_df2 ## again, several chunks put together into one, so there may be some redundancy
+```
+
+```{r}
+summary2 = final_df2 |>
+  group_by(yearID) |>
+  summarize(avg_games = mean(games), avg_gls = mean(gls), avg_pts = mean(pts),avg_ppg = avg_pts/avg_games, avg_gpg = avg_gls/avg_games) |>
+  arrange(desc(avg_ppg))
+summary2 ##generating summary statistics for the forwards data
+```
+
+```{r}
+summary
+summary2 ## to access the summary dataset without running the massive chunks more than once
+```
+
+#### Turning Everything Into Decade-Based Sets
+
+```{r}
+decades_def = summary |>
+  mutate(decade = yearID %/% 10 * 10) |> ## creating decades variable with integer division
+  group_by(decade) |>
+  summarize(decade_avg_gls = mean(avg_gls), decade_avg_pts = mean(avg_pts), decade_avg_ppg = mean(avg_ppg)) 
+decades_def ## generating decade summary statistics for defensemen
+```
+
+```{r}
+decades_fwd = summary2 |>
+  mutate(decade = yearID %/% 10 * 10) |>
+  group_by(decade) |>
+  summarize(decade_avg_gls = mean(avg_gls), decade_avg_pts = mean(avg_pts), decade_avg_ppg = mean(avg_ppg)) 
+decades_fwd ## generating decade summary statistics for forwards
+```
+
+```{r}
+years = scoring_df |>
+  select(year_id, avg_goals, sa, sv, sv_pct) 
+decades_shooting = years |>
+  mutate(decade = year_id %/% 10 * 10) |>
+  group_by(decade) |>
+  summarize(avg_gls = mean(avg_goals), avg_sa = mean(sa), avg_sv = mean(sv), avg_sv_pct = mean(sv_pct))
+decades_shooting ## generating decade averages for the league-wide averages on goals scored, save percentage, etc. from above
+```
+
+```{r}
+decades = left_join(decades_fwd, decades_def, by = "decade", suffix = c("_forward", "_defense"))
+final_decades = left_join(decades, decades_shooting, by = "decade")
+final_decades ## joining the forwards, defense, and league-wide stats into one big master dataframe to sort for each given stat of interest
+```
+
+## Answers to Research Questions
+
+#### Which decade had the highest average goals scored for the top 50 forwards?
+
+```{r}
+final_decades |>
+  arrange(desc(decade_avg_gls_forward)) |>
+  select(decade,decade_avg_gls_forward)
+```
+
+#### Which decade had the highest average points per game for the top 50 forwards?
+
+```{r}
+final_decades |>  
+  arrange(desc(decade_avg_ppg_forward))  |>
+  select(decade, decade_avg_ppg_forward)
+```
+
+#### Which decade had the most average shots against per game?
+
+```{r}
+final_decades |>
+  arrange(desc(avg_sa)) |>
+  select(decade, avg_sa)
+```
+
+#### Which decade has the highest average save percentage?
+
+```{r}
+final_decades |>
+  arrange(desc(avg_sv_pct)) |>
+  select(decade, avg_sv_pct)
+```
+
+#### Which decade had the most goals scored per game on the season?
+
+```{r}
+final_decades |>
+  arrange(desc(avg_gls)) |>
+  select(decade,avg_gls)
+```
+
+#### Which decade saw the highest average points per game for the top 50 defensemen?
+
+```{r}
+final_decades |>
+  arrange(desc(decade_avg_ppg_defense)) |>
+  select(decade,decade_avg_ppg_defense )
+```
+
+## Standardizing Save Percentage Numbers to look for Differences
+
+```{r}
+final_decades |>
+  mutate(std_sv_pct = scale(avg_sv_pct)) |>
+  select(decade, std_sv_pct)
+```
+
+```{r}
+art_ross |>
+  arrange(desc(pts)) |>
+  select(year, Winner, pts) ## used this to look at the dataframe to see how many high scoring seasons were in the 80s
+```
+
+#### Reading Leading Goalscorers' Names
+
+```{r}
+years = as.character(1955:2023)
+years = years[years != "2005"]
+leader_name = rep(NA,length(years))
+
+for(i in 1:length(years)){
+Sys.sleep(5.5) ## slightly different, but idea is the same to avoid the site ban
+  link4 = paste0("https://www.hockey-reference.com/leagues/NHL_",years[i],".html")
+  page = read_html(link4)
+  season = page |> 
+  html_elements("p") |>
+  html_text2() 
+leader = str_subset(season, "Goals Leaders: .+")
+clean = str_replace_all(leader, "\\([^\\)]+\\)" , "") ## same logic as the goal number but replacing any numbers and parentheses with space to leave just the name
+leader_name[i] = str_extract(clean, "(?<=:\\s).+")
+}
+name_df = data.frame(year = years, leader_name = leader_name)
+name_df = name_df |>
+  mutate(yearID = as.integer(year)) 
+scoring_names = left_join(goal_df, name_df, by = "yearID") ## joining this set to the set with the goalscoring numbers to make it complete
+```
+
+```{r}
+scoring_names |>
+  select(yearID, goals_num, leader_name) |>
+  arrange(desc(goals_num)) ## organizing the leading scorer data set, inspecting for anything out of the ordinary
+```
+
+```{r}
+scoring_names_dec = scoring_names |>
+  mutate(decade = yearID %/% 10 * 10) ##decade-izing the above set
+```
+
+#### Comparing Goalscoring Seasons to Their Contemporaries
+
+```{r}
+scoring_names_dec |>
+  group_by(decade) |>
+  mutate(avg_goals = mean(goals_num)) |>
+  mutate(goal_diff = goals_num - avg_goals) |>
+  select(goal_diff, leader_name, goals_num, yearID, decade) |>
+  arrange(desc(goal_diff)) ## expectation by decade
+```
+
+#### Comparing All Seasons to One Number
+
+```{r}
+scoring_aex = scoring_names |>
+  mutate(total_gls = sum(goals_num)) |>
+  mutate(gls_expected = total_gls/68) |>
+  mutate(gls_aex = goals_num - gls_expected) |>
+  arrange(desc(gls_aex)) |>
+  select(gls_aex, yearID, goals_num, leader_name) 
+scoring_aex ## total expectation for all 68 seasons for leading goalscorers, ended up scrapping this idea
+```
+
+```{r}
+scoring_names_dec |>
+  group_by(decade) |>
+  mutate(avg_goals = mean(goals_num)) |>
+  mutate(goal_diff = goals_num - avg_goals) |>
+  select(decade, avg_goals) |>
+  filter(row_number() %% 10 == 1) ## generating table of expected goals for the leader in each decade
+```
+
+```{r}
+ggplot(scoring_names, aes(x= yearID, y = goals_num)) + geom_point() + geom_line() + labs(x ="Year", y = "Goals Scored", title = "Goals Scored by the NHL's Leading Goalscorer 1955-2023") ## plot of goalscoring numbers
+```
+
+#### Final Graph and Data Table
+
+```{r}
+scoring_df = scoring_df |>
+  mutate(standard_diff = avg_goals_standard - sv_pct_standard) 
+## here I created a standarized difference variable to inspect the trends toward offense and/or defense in the NHL scoring numbers across the years
+ggplot(scoring_df, aes(x= year_id)) + geom_line(aes(y= standard_diff)) + labs(x= "Year", y = "Standard Difference", title  = "Standardized Difference Between Goalscoring and Goalie Performance in the NHL from 1955-2023") 
+```
+
+```{r}
+scoring_df |>
+  arrange(desc(standard_diff)) |>
+  select(year_id, standard_diff, avg_goals_standard, sv_pct_standard)
+## the data set used for the graph
+```
