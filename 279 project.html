@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>279 Project</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="279 project_files/libs/clipboard/clipboard.min.js"></script>
+<script src="279 project_files/libs/quarto-html/quarto.js"></script>
+<script src="279 project_files/libs/quarto-html/popper.min.js"></script>
+<script src="279 project_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="279 project_files/libs/quarto-html/anchor.min.js"></script>
+<link href="279 project_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="279 project_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="279 project_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="279 project_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="279 project_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">279 Project</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="research-project" class="level4">
+<h4 class="anchored" data-anchor-id="research-project">Research Project</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'rvest'
+
+The following object is masked from 'package:readr':
+
+    guess_encoding</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'data.table'
+
+The following objects are masked from 'package:lubridate':
+
+    hour, isoweek, mday, minute, month, quarter, second, wday, week,
+    yday, year
+
+The following objects are masked from 'package:dplyr':
+
+    between, first, last
+
+The following object is masked from 'package:purrr':
+
+    transpose</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>link <span class="ot">=</span> <span class="fu">read_html</span>(<span class="fu">paste0</span>(<span class="st">"https://www.hockey-reference.com/leagues/stats.html"</span>))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>table <span class="ot">=</span> link <span class="sc">|&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">"table"</span>) <span class="sc">|&gt;</span> <span class="do">## this code scrapes the seasonal averages from the data table</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>() </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> table[[<span class="dv">1</span>]] <span class="sc">|&gt;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">"Season"</span>, <span class="st">"G"</span>,<span class="st">"SA"</span>, <span class="st">"SV"</span>, <span class="st">"SV%"</span>, <span class="st">"GAA"</span>) </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">21</span>,<span class="dv">42</span>,<span class="dv">63</span>,<span class="dv">84</span>,<span class="dv">105</span>),] <span class="do">## there is a blank column every 21 rows, so I had to remove each empty row</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 106 × 6
+   Season  G     SA    SV    `SV%` GAA  
+   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+ 1 2023-24 3.11  30.1  27.2  .903  2.91 
+ 2 2022-23 3.18  31.1  28.1  .904  2.97 
+ 3 2021-22 3.14  31.4  28.5  .907  2.92 
+ 4 2020-21 2.94  29.8  27.1  .908  2.74 
+ 5 2019-20 3.02  31.3  28.4  .910  2.82 
+ 6 2018-19 3.01  31.3  28.5  .910  2.81 
+ 7 2017-18 2.97  31.8  29.0  .912  2.78 
+ 8 2016-17 2.77  30.1  27.5  .913  2.59 
+ 9 2015-16 2.71  29.6  27.1  .915  2.51 
+10 2014-15 2.73  29.8  27.3  .915  2.52 
+# ℹ 96 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>scoring_df <span class="ot">=</span> df <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">avg_goals =</span> <span class="fu">as.double</span>(G)) <span class="sc">|&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year_id =</span> <span class="fu">as.integer</span>(<span class="fu">substring</span>(Season,<span class="dv">1</span>,<span class="dv">4</span>))) <span class="sc">|&gt;</span> <span class="do">## had to change all columns to the correct class</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year_id <span class="sc">&gt;=</span><span class="dv">1955</span>) <span class="sc">|&gt;</span> <span class="do">## ensuring data from 1955-2023</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sv =</span> <span class="fu">as.double</span>(SV)) <span class="sc">|&gt;</span> </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sa =</span> <span class="fu">as.double</span>(SA)) <span class="sc">|&gt;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sv_pct =</span> <span class="fu">as.double</span>(sv<span class="sc">/</span>sa)) <span class="sc">|&gt;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">avg_goals_standard =</span> <span class="fu">scale</span>(avg_goals), <span class="do">## standardizing variables to compare them to one another</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">sv_pct_standard =</span> <span class="fu">scale</span>(sv_pct), <span class="at">sa_standard =</span> <span class="fu">scale</span>(sa))</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>scoring_df <span class="do">## same scoring_df used later on</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 68 × 14
+   Season  G     SA    SV    `SV%` GAA   avg_goals year_id    sv    sa sv_pct
+   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1 2023-24 3.11  30.1  27.2  .903  2.91       3.11    2023  27.2  30.1  0.904
+ 2 2022-23 3.18  31.1  28.1  .904  2.97       3.18    2022  28.1  31.1  0.904
+ 3 2021-22 3.14  31.4  28.5  .907  2.92       3.14    2021  28.5  31.4  0.908
+ 4 2020-21 2.94  29.8  27.1  .908  2.74       2.94    2020  27.1  29.8  0.909
+ 5 2019-20 3.02  31.3  28.4  .910  2.82       3.02    2019  28.4  31.3  0.907
+ 6 2018-19 3.01  31.3  28.5  .910  2.81       3.01    2018  28.5  31.3  0.911
+ 7 2017-18 2.97  31.8  29.0  .912  2.78       2.97    2017  29    31.8  0.912
+ 8 2016-17 2.77  30.1  27.5  .913  2.59       2.77    2016  27.5  30.1  0.914
+ 9 2015-16 2.71  29.6  27.1  .915  2.51       2.71    2015  27.1  29.6  0.916
+10 2014-15 2.73  29.8  27.3  .915  2.52       2.73    2014  27.3  29.8  0.916
+# ℹ 58 more rows
+# ℹ 3 more variables: avg_goals_standard &lt;dbl[,1]&gt;, sv_pct_standard &lt;dbl[,1]&gt;,
+#   sa_standard &lt;dbl[,1]&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="point-scoring-leader-numbers" class="level4">
+<h4 class="anchored" data-anchor-id="point-scoring-leader-numbers">Point Scoring Leader Numbers</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>link3 <span class="ot">=</span> <span class="fu">read_html</span>(<span class="fu">paste0</span>(<span class="st">"https://en.wikipedia.org/wiki/Art_Ross_Trophy"</span>))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>tables <span class="ot">=</span> link3 <span class="sc">|&gt;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">"table"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>()</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>art_ross <span class="ot">=</span> tables[[<span class="dv">2</span>]] <span class="sc">|&gt;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pts =</span> <span class="fu">as.integer</span>(Points)) <span class="sc">|&gt;</span> <span class="do">##changing column types</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.integer</span>(<span class="fu">substring</span>(Season, <span class="dv">1</span>,<span class="dv">4</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;=</span><span class="dv">1955</span>) <span class="sc">|&gt;</span> <span class="do">## making sure I only had data from 1955-2023</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">standard_pts =</span> <span class="fu">scale</span>(pts)) <span class="sc">|&gt;</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, Winner, pts, standard_pts) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `pts = as.integer(Points)`.
+Caused by warning:
+! NAs introduced by coercion</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>art_ross <span class="ot">=</span> art_ross[<span class="sc">-</span><span class="dv">50</span>, ] <span class="do">## erased an empty column from the canceled 2004-05 season</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>art_ross</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 68 × 4
+    year Winner             pts standard_pts[,1]
+   &lt;int&gt; &lt;chr&gt;            &lt;int&gt;            &lt;dbl&gt;
+ 1  1955 Jean Beliveau       88           -1.01 
+ 2  1956 Gordie Howe         89           -0.987
+ 3  1957 Dickie Moore        84           -1.13 
+ 4  1958 Dickie Moore        96           -0.792
+ 5  1959 Bobby Hull          81           -1.21 
+ 6  1960 Bernie Geoffrion    95           -0.820
+ 7  1961 Bobby Hull          84           -1.13 
+ 8  1962 Gordie Howe         86           -1.07 
+ 9  1963 Stan Mikita         89           -0.987
+10  1964 Stan Mikita         87           -1.04 
+# ℹ 58 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="leading-goalscorer-code" class="level4">
+<h4 class="anchored" data-anchor-id="leading-goalscorer-code">Leading Goalscorer Code</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="fu">as.character</span>(<span class="dv">1955</span><span class="sc">:</span><span class="dv">2023</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> years[years <span class="sc">!=</span> <span class="st">"2005"</span>] <span class="do">## removing the canceled 2005 season</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>goal_num <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>,<span class="fu">length</span>(years))</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(years)){</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  link4 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">"https://www.hockey-reference.com/leagues/NHL_"</span>,years[i],<span class="st">".html"</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  page <span class="ot">=</span> <span class="fu">read_html</span>(link4)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(i<span class="sc">%%</span><span class="dv">20</span><span class="sc">==</span><span class="dv">0</span>){</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">61</span>) <span class="do">## idea to get around site ban on automated scraping(more than 20 requests in a minute)</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>season <span class="ot">=</span> page <span class="sc">|&gt;</span> </span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">"p"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text2</span>() </span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>leader <span class="ot">=</span> <span class="fu">str_subset</span>(season, <span class="st">"Goals Leaders: .+"</span>) </span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>goal_num[i] <span class="ot">=</span> <span class="fu">str_extract</span>(leader, <span class="st">"</span><span class="sc">\\</span><span class="st">d+"</span>) <span class="do">##scraping goal number, scraped name later in a different chunk</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>goal_df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">year =</span> years, <span class="at">goal_num =</span> goal_num)</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>goal_df <span class="ot">=</span> goal_df <span class="sc">|&gt;</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">yearID =</span> <span class="fu">as.integer</span>(year), <span class="at">goals_num =</span> <span class="fu">as.integer</span>(goal_num)) <span class="sc">|&gt;</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">standard_goals =</span> <span class="fu">scale</span>(goals_num)) <span class="sc">|&gt;</span> <span class="do">##changing column types and standardizing the goal_scored variable</span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(yearID,goals_num,standard_goals)</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>goal_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   yearID goals_num standard_goals
+1    1955        38    -1.40002167
+2    1956        47    -0.71893005
+3    1957        44    -0.94596059
+4    1958        36    -1.55137537
+5    1959        45    -0.87028374
+6    1960        39    -1.32434483
+7    1961        50    -0.49189951
+8    1962        50    -0.49189951
+9    1963        38    -1.40002167
+10   1964        43    -1.02163744
+11   1965        42    -1.09731429
+12   1966        54    -0.18919212
+13   1967        52    -0.34054581
+14   1968        44    -0.94596059
+15   1969        58     0.11351527
+16   1970        43    -1.02163744
+17   1971        76     1.47569852
+18   1972        66     0.71893005
+19   1973        55    -0.11351527
+20   1974        68     0.87028374
+21   1975        61     0.34054581
+22   1976        61     0.34054581
+23   1977        60     0.26486897
+24   1978        60     0.26486897
+25   1979        69     0.94596059
+26   1980        56    -0.03783842
+27   1981        68     0.87028374
+28   1982        92     2.68652808
+29   1983        71     1.09731429
+30   1984        87     2.30814384
+31   1985        73     1.24866798
+32   1986        68     0.87028374
+33   1987        62     0.41622266
+34   1988        70     1.02163744
+35   1989        85     2.15679015
+36   1990        72     1.17299113
+37   1991        86     2.23246699
+38   1992        70     1.02163744
+39   1993        76     1.47569852
+40   1994        60     0.26486897
+41   1995        34    -1.70272906
+42   1996        69     0.94596059
+43   1997        52    -0.34054581
+44   1998        52    -0.34054581
+45   1999        47    -0.71893005
+46   2000        58     0.11351527
+47   2001        59     0.18919212
+48   2002        52    -0.34054581
+49   2003        50    -0.49189951
+50   2004        41    -1.17299113
+51   2006        56    -0.03783842
+52   2007        52    -0.34054581
+53   2008        65     0.64325320
+54   2009        56    -0.03783842
+55   2010        51    -0.41622266
+56   2011        50    -0.49189951
+57   2012        60     0.26486897
+58   2013        32    -1.85408276
+59   2014        51    -0.41622266
+60   2015        53    -0.26486897
+61   2016        50    -0.49189951
+62   2017        44    -0.94596059
+63   2018        49    -0.56757635
+64   2019        51    -0.41622266
+65   2020        48    -0.64325320
+66   2021        41    -1.17299113
+67   2022        60     0.26486897
+68   2023        64     0.56757635</code></pre>
+</div>
+</div>
+</section>
+<section id="top-50-defensemen-scoring-data" class="level4">
+<h4 class="anchored" data-anchor-id="top-50-defensemen-scoring-data">Top 50 Defensemen Scoring Data</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>years2 <span class="ot">=</span> <span class="dv">1955</span><span class="sc">:</span><span class="dv">2022</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>years2 <span class="ot">=</span> years2[years2 <span class="sc">!=</span> <span class="st">"2004"</span>] <span class="do">##removing the 2004-05 season</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>full_years <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="fu">length</span>(years2))</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(years2)){</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  full_years[i] <span class="ot">=</span> <span class="fu">paste0</span>(years2[i], <span class="st">"-"</span> , <span class="fu">substr</span>((years2[i]<span class="sc">+</span><span class="dv">1</span>),<span class="dv">3</span>,<span class="dv">4</span>))</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>full_years <span class="ot">=</span> <span class="fu">as.character</span>(full_years) <span class="do">## this site was tricky as its url featured "2021-22" as its year as opposed to just "2022", so I had to create a special list to iterate across</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>d_men <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>,<span class="fu">length</span>(full_years))</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>df_list <span class="ot">=</span> <span class="fu">list</span>()</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(full_years)){</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>link5 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">"https://www.quanthockey.com/nhl/seasons/"</span>,full_years[i],<span class="st">"-nhl-defensemen-stats.html"</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>url5 <span class="ot">=</span> <span class="fu">read_html</span>(link5)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>d_men <span class="ot">=</span> url5 <span class="sc">|&gt;</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">"table"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">header =</span> <span class="cn">FALSE</span>) </span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>d_men_df <span class="ot">=</span> <span class="fu">rbindlist</span>(d_men)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>d_men_df <span class="ot">=</span> d_men_df <span class="sc">|&gt;</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> full_years[i]) <span class="do">## designating a year variable for the table</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>d_men_df <span class="ot">=</span> d_men_df[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),] <span class="do">## eliminating empty rows at the top</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>df_list[[i]] <span class="ot">=</span> d_men_df</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>final_df <span class="ot">=</span> <span class="fu">rbindlist</span>(df_list)</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>final_df <span class="ot">=</span> final_df <span class="sc">|&gt;</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(X3,X7,X8,X10,year)</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(final_df) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Name"</span>, <span class="st">"games_played"</span>, <span class="st">"goals"</span>, <span class="st">"points"</span>, <span class="st">"year"</span>) <span class="do">##changing column names</span></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>final_df <span class="ot">=</span> final_df <span class="sc">|&gt;</span></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">games =</span> <span class="fu">as.integer</span>(games_played), <span class="at">gls =</span> <span class="fu">as.integer</span>(goals), <span class="at">pts =</span> <span class="fu">as.integer</span>(points)) <span class="sc">|&gt;</span> <span class="do">##changing column types again</span></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">yearID =</span> <span class="fu">as.integer</span>(<span class="fu">substr</span>(year,<span class="dv">1</span>,<span class="dv">4</span>))) <span class="sc">|&gt;</span> <span class="do">## setting just the first 4 characters to be the year</span></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Name, games, gls, pts, yearID)</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>final_df <span class="do">## this is several chunks put together, so there may be some redundancy in places</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  Name games gls pts yearID
+   1:      Bill Gadsby    70   9  51   1955
+   2:      Doug Harvey    62   5  44   1955
+   3: Bill Quackenbush    70   3  25   1955
+   4:      Fern Flaman    62   4  21   1955
+   5:      Hugh Bolton    67   4  20   1955
+  ---                                      
+3276:       Owen Power    79   4  35   2022
+3277:   Jared Spurgeon    79  11  34   2022
+3278: Michael Matheson    48   8  34   2022
+3279:   Justin Schultz    73   7  34   2022
+3280:   Juuso Välimäki    78   4  34   2022</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>summary <span class="ot">=</span> final_df <span class="sc">|&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(yearID) <span class="sc">|&gt;</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_games =</span> <span class="fu">mean</span>(games), <span class="at">avg_gls =</span> <span class="fu">mean</span>(gls), <span class="at">avg_pts =</span> <span class="fu">mean</span>(pts),<span class="at">avg_ppg =</span> avg_pts<span class="sc">/</span>avg_games, <span class="at">avg_gpg =</span> avg_gls<span class="sc">/</span>avg_games) <span class="do">## generating summary statistics like points per game and goals per game for defensemen</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 67 × 6
+   yearID avg_games avg_gls avg_pts avg_ppg avg_gpg
+    &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1   1955      45.2    2.09    11.3   0.250  0.0463
+ 2   1956      48.6    2.35    12.9   0.265  0.0483
+ 3   1957      44.7    2.30    11.6   0.260  0.0516
+ 4   1958      53.1    3.03    14.7   0.277  0.0570
+ 5   1959      46.9    3.05    13.8   0.293  0.0649
+ 6   1960      51.8    2.78    14.2   0.273  0.0535
+ 7   1961      50.3    3.31    15.7   0.313  0.0658
+ 8   1962      44.7    2.40    12.5   0.279  0.0538
+ 9   1963      41.2    2.4     11.6   0.282  0.0583
+10   1964      44.4    2.38    13.1   0.295  0.0536
+# ℹ 57 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="top-50-forward-scoring" class="level4">
+<h4 class="anchored" data-anchor-id="top-50-forward-scoring">Top 50 Forward Scoring</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df_list2 <span class="ot">=</span> <span class="fu">list</span>()</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(full_years)){</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>link5 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">"https://www.quanthockey.com/nhl/seasons/"</span>,full_years[i],<span class="st">"-nhl-forwards-stats.html"</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>url5 <span class="ot">=</span> <span class="fu">read_html</span>(link5)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>forward <span class="ot">=</span> url5 <span class="sc">|&gt;</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">"table"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>(<span class="at">header =</span> <span class="cn">FALSE</span>) <span class="do">## essentially the same deal as with the defensemen above</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>forward_df <span class="ot">=</span> <span class="fu">rbindlist</span>(forward)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>forward_df <span class="ot">=</span> forward_df <span class="sc">|&gt;</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> full_years[i])</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>forward_df <span class="ot">=</span> forward_df[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),]</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>df_list2[[i]] <span class="ot">=</span> forward_df</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>final_df2 <span class="ot">=</span> <span class="fu">rbindlist</span>(df_list2)</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>final_df2 <span class="ot">=</span> final_df2 <span class="sc">|&gt;</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(X3,X7,X8,X10,year)</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(final_df2) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Name"</span>, <span class="st">"games_played"</span>, <span class="st">"goals"</span>, <span class="st">"points"</span>, <span class="st">"year"</span>)</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>final_df2 <span class="ot">=</span> final_df2 <span class="sc">|&gt;</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">games =</span> <span class="fu">as.integer</span>(games_played), <span class="at">gls =</span> <span class="fu">as.integer</span>(goals), <span class="at">pts =</span> <span class="fu">as.integer</span>(points)) <span class="sc">|&gt;</span> </span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">yearID =</span> <span class="fu">as.integer</span>(<span class="fu">substr</span>(year,<span class="dv">1</span>,<span class="dv">4</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Name, games, gls, pts, yearID)</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>final_df2 <span class="do">## again, several chunks put together into one, so there may be some redundancy</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 Name games gls pts yearID
+   1:   Jean Beliveau    70  47  88   1955
+   2:     Gordie Howe    70  38  79   1955
+   3: Maurice Richard    70  38  71   1955
+   4:   Bert Olmstead    70  14  70   1955
+   5:       Tod Sloan    70  37  66   1955
+  ---                                     
+3346:   Jake Guentzel    78  36  73   2022
+3347:   Tyler Toffoli    82  34  73   2022
+3348:    Jesper Bratt    82  32  73   2022
+3349:     Kevin Fiala    69  23  72   2022
+3350:    Martin Necas    82  28  71   2022</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>summary2 <span class="ot">=</span> final_df2 <span class="sc">|&gt;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(yearID) <span class="sc">|&gt;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_games =</span> <span class="fu">mean</span>(games), <span class="at">avg_gls =</span> <span class="fu">mean</span>(gls), <span class="at">avg_pts =</span> <span class="fu">mean</span>(pts),<span class="at">avg_ppg =</span> avg_pts<span class="sc">/</span>avg_games, <span class="at">avg_gpg =</span> avg_gls<span class="sc">/</span>avg_games) <span class="sc">|&gt;</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_ppg))</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>summary2 <span class="do">##generating summary statistics for the forwards data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 67 × 6
+   yearID avg_games avg_gls avg_pts avg_ppg avg_gpg
+    &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1   1992      80.2    41.5   101.     1.26   0.517
+ 2   1981      76.8    40.3    95.8    1.25   0.524
+ 3   1988      75.4    39.5    91.5    1.21   0.524
+ 4   1983      75.6    39.2    91.8    1.21   0.519
+ 5   1985      76.4    38.9    91.1    1.19   0.509
+ 6   1987      76.2    39.1    90.5    1.19   0.513
+ 7   1984      77.4    39.2    91.3    1.18   0.507
+ 8   1989      76.9    37.8    90.2    1.17   0.491
+ 9   1995      77.2    36.6    90.0    1.17   0.474
+10   1980      76.2    38.3    88.2    1.16   0.503
+# ℹ 57 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 67 × 6
+   yearID avg_games avg_gls avg_pts avg_ppg avg_gpg
+    &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1   1955      45.2    2.09    11.3   0.250  0.0463
+ 2   1956      48.6    2.35    12.9   0.265  0.0483
+ 3   1957      44.7    2.30    11.6   0.260  0.0516
+ 4   1958      53.1    3.03    14.7   0.277  0.0570
+ 5   1959      46.9    3.05    13.8   0.293  0.0649
+ 6   1960      51.8    2.78    14.2   0.273  0.0535
+ 7   1961      50.3    3.31    15.7   0.313  0.0658
+ 8   1962      44.7    2.40    12.5   0.279  0.0538
+ 9   1963      41.2    2.4     11.6   0.282  0.0583
+10   1964      44.4    2.38    13.1   0.295  0.0536
+# ℹ 57 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>summary2 <span class="do">## to access the summary dataset without running the massive chunks more than once</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 67 × 6
+   yearID avg_games avg_gls avg_pts avg_ppg avg_gpg
+    &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1   1992      80.2    41.5   101.     1.26   0.517
+ 2   1981      76.8    40.3    95.8    1.25   0.524
+ 3   1988      75.4    39.5    91.5    1.21   0.524
+ 4   1983      75.6    39.2    91.8    1.21   0.519
+ 5   1985      76.4    38.9    91.1    1.19   0.509
+ 6   1987      76.2    39.1    90.5    1.19   0.513
+ 7   1984      77.4    39.2    91.3    1.18   0.507
+ 8   1989      76.9    37.8    90.2    1.17   0.491
+ 9   1995      77.2    36.6    90.0    1.17   0.474
+10   1980      76.2    38.3    88.2    1.16   0.503
+# ℹ 57 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="turning-everything-into-decade-based-sets" class="level4">
+<h4 class="anchored" data-anchor-id="turning-everything-into-decade-based-sets">Turning Everything Into Decade-Based Sets</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>decades_def <span class="ot">=</span> summary <span class="sc">|&gt;</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decade =</span> yearID <span class="sc">%/%</span> <span class="dv">10</span> <span class="sc">*</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="do">## creating decades variable with integer division</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(decade) <span class="sc">|&gt;</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">decade_avg_gls =</span> <span class="fu">mean</span>(avg_gls), <span class="at">decade_avg_pts =</span> <span class="fu">mean</span>(avg_pts), <span class="at">decade_avg_ppg =</span> <span class="fu">mean</span>(avg_ppg)) </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>decades_def <span class="do">## generating decade summary statistics for defensemen</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 4
+  decade decade_avg_gls decade_avg_pts decade_avg_ppg
+   &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;
+1   1950           2.56           12.9          0.269
+2   1960           3.48           16.9          0.317
+3   1970           8.64           36.9          0.510
+4   1980          11.9            48.4          0.669
+5   1990          10.3            42.2          0.592
+6   2000           9.97           40.8          0.535
+7   2010           9.42           40.3          0.554
+8   2020           9.3            43.4          0.635</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>decades_fwd <span class="ot">=</span> summary2 <span class="sc">|&gt;</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decade =</span> yearID <span class="sc">%/%</span> <span class="dv">10</span> <span class="sc">*</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(decade) <span class="sc">|&gt;</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">decade_avg_gls =</span> <span class="fu">mean</span>(avg_gls), <span class="at">decade_avg_pts =</span> <span class="fu">mean</span>(avg_pts), <span class="at">decade_avg_ppg =</span> <span class="fu">mean</span>(avg_ppg)) </span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>decades_fwd <span class="do">## generating decade summary statistics for forwards</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 4
+  decade decade_avg_gls decade_avg_pts decade_avg_ppg
+   &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;
+1   1950           18.5           44.0          0.675
+2   1960           21.3           50.3          0.747
+3   1970           32.6           76.1          0.998
+4   1980           38.7           90.3          1.18 
+5   1990           32.7           78.5          1.05 
+6   2000           31.1           77.1          0.980
+7   2010           27.7           69.0          0.929
+8   2020           31.4           75.9          1.08 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> scoring_df <span class="sc">|&gt;</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year_id, avg_goals, sa, sv, sv_pct) </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>decades_shooting <span class="ot">=</span> years <span class="sc">|&gt;</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decade =</span> year_id <span class="sc">%/%</span> <span class="dv">10</span> <span class="sc">*</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(decade) <span class="sc">|&gt;</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_gls =</span> <span class="fu">mean</span>(avg_goals), <span class="at">avg_sa =</span> <span class="fu">mean</span>(sa), <span class="at">avg_sv =</span> <span class="fu">mean</span>(sv), <span class="at">avg_sv_pct =</span> <span class="fu">mean</span>(sv_pct))</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>decades_shooting <span class="do">## generating decade averages for the league-wide averages on goals scored, save percentage, etc. from above</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 5
+  decade avg_gls avg_sa avg_sv avg_sv_pct
+   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;
+1   1950    2.77   30.6   27.8      0.910
+2   1960    2.93   31.8   28.9      0.909
+3   1970    3.31   30.3   27.1      0.893
+4   1980    3.83   30.5   26.7      0.877
+5   1990    3.09   29.3   26.3      0.898
+6   2000    2.80   28.9   26.2      0.908
+7   2010    2.82   30.3   27.6      0.913
+8   2020    3.09   30.6   27.7      0.906</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>decades <span class="ot">=</span> <span class="fu">left_join</span>(decades_fwd, decades_def, <span class="at">by =</span> <span class="st">"decade"</span>, <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_forward"</span>, <span class="st">"_defense"</span>))</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>final_decades <span class="ot">=</span> <span class="fu">left_join</span>(decades, decades_shooting, <span class="at">by =</span> <span class="st">"decade"</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>final_decades <span class="do">## joining the forwards, defense, and league-wide stats into one big master dataframe to sort for each given stat of interest</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 11
+  decade decade_avg_gls_forward decade_avg_pts_forward decade_avg_ppg_forward
+   &lt;dbl&gt;                  &lt;dbl&gt;                  &lt;dbl&gt;                  &lt;dbl&gt;
+1   1950                   18.5                   44.0                  0.675
+2   1960                   21.3                   50.3                  0.747
+3   1970                   32.6                   76.1                  0.998
+4   1980                   38.7                   90.3                  1.18 
+5   1990                   32.7                   78.5                  1.05 
+6   2000                   31.1                   77.1                  0.980
+7   2010                   27.7                   69.0                  0.929
+8   2020                   31.4                   75.9                  1.08 
+# ℹ 7 more variables: decade_avg_gls_defense &lt;dbl&gt;,
+#   decade_avg_pts_defense &lt;dbl&gt;, decade_avg_ppg_defense &lt;dbl&gt;, avg_gls &lt;dbl&gt;,
+#   avg_sa &lt;dbl&gt;, avg_sv &lt;dbl&gt;, avg_sv_pct &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="answers-to-research-questions" class="level2">
+<h2 class="anchored" data-anchor-id="answers-to-research-questions">Answers to Research Questions</h2>
+<section id="which-decade-had-the-highest-average-goals-scored-for-the-top-50-forwards" class="level4">
+<h4 class="anchored" data-anchor-id="which-decade-had-the-highest-average-goals-scored-for-the-top-50-forwards">Which decade had the highest average goals scored for the top 50 forwards?</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>final_decades <span class="sc">|&gt;</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(decade_avg_gls_forward)) <span class="sc">|&gt;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(decade,decade_avg_gls_forward)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 2
+  decade decade_avg_gls_forward
+   &lt;dbl&gt;                  &lt;dbl&gt;
+1   1980                   38.7
+2   1990                   32.7
+3   1970                   32.6
+4   2020                   31.4
+5   2000                   31.1
+6   2010                   27.7
+7   1960                   21.3
+8   1950                   18.5</code></pre>
+</div>
+</div>
+</section>
+<section id="which-decade-had-the-highest-average-points-per-game-for-the-top-50-forwards" class="level4">
+<h4 class="anchored" data-anchor-id="which-decade-had-the-highest-average-points-per-game-for-the-top-50-forwards">Which decade had the highest average points per game for the top 50 forwards?</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>final_decades <span class="sc">|&gt;</span>  </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(decade_avg_ppg_forward))  <span class="sc">|&gt;</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(decade, decade_avg_ppg_forward)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 2
+  decade decade_avg_ppg_forward
+   &lt;dbl&gt;                  &lt;dbl&gt;
+1   1980                  1.18 
+2   2020                  1.08 
+3   1990                  1.05 
+4   1970                  0.998
+5   2000                  0.980
+6   2010                  0.929
+7   1960                  0.747
+8   1950                  0.675</code></pre>
+</div>
+</div>
+</section>
+<section id="which-decade-had-the-most-average-shots-against-per-game" class="level4">
+<h4 class="anchored" data-anchor-id="which-decade-had-the-most-average-shots-against-per-game">Which decade had the most average shots against per game?</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>final_decades <span class="sc">|&gt;</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_sa)) <span class="sc">|&gt;</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(decade, avg_sa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 2
+  decade avg_sa
+   &lt;dbl&gt;  &lt;dbl&gt;
+1   1960   31.8
+2   1950   30.6
+3   2020   30.6
+4   1980   30.5
+5   1970   30.3
+6   2010   30.3
+7   1990   29.3
+8   2000   28.9</code></pre>
+</div>
+</div>
+</section>
+<section id="which-decade-has-the-highest-average-save-percentage" class="level4">
+<h4 class="anchored" data-anchor-id="which-decade-has-the-highest-average-save-percentage">Which decade has the highest average save percentage?</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>final_decades <span class="sc">|&gt;</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_sv_pct)) <span class="sc">|&gt;</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(decade, avg_sv_pct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 2
+  decade avg_sv_pct
+   &lt;dbl&gt;      &lt;dbl&gt;
+1   2010      0.913
+2   1950      0.910
+3   1960      0.909
+4   2000      0.908
+5   2020      0.906
+6   1990      0.898
+7   1970      0.893
+8   1980      0.877</code></pre>
+</div>
+</div>
+</section>
+<section id="which-decade-had-the-most-goals-scored-per-game-on-the-season" class="level4">
+<h4 class="anchored" data-anchor-id="which-decade-had-the-most-goals-scored-per-game-on-the-season">Which decade had the most goals scored per game on the season?</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>final_decades <span class="sc">|&gt;</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_gls)) <span class="sc">|&gt;</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(decade,avg_gls)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 2
+  decade avg_gls
+   &lt;dbl&gt;   &lt;dbl&gt;
+1   1980    3.83
+2   1970    3.31
+3   2020    3.09
+4   1990    3.09
+5   1960    2.93
+6   2010    2.82
+7   2000    2.80
+8   1950    2.77</code></pre>
+</div>
+</div>
+</section>
+<section id="which-decade-saw-the-highest-average-points-per-game-for-the-top-50-defensemen" class="level4">
+<h4 class="anchored" data-anchor-id="which-decade-saw-the-highest-average-points-per-game-for-the-top-50-defensemen">Which decade saw the highest average points per game for the top 50 defensemen?</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>final_decades <span class="sc">|&gt;</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(decade_avg_ppg_defense)) <span class="sc">|&gt;</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(decade,decade_avg_ppg_defense )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 2
+  decade decade_avg_ppg_defense
+   &lt;dbl&gt;                  &lt;dbl&gt;
+1   1980                  0.669
+2   2020                  0.635
+3   1990                  0.592
+4   2010                  0.554
+5   2000                  0.535
+6   1970                  0.510
+7   1960                  0.317
+8   1950                  0.269</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="standardizing-save-percentage-numbers-to-look-for-differences" class="level2">
+<h2 class="anchored" data-anchor-id="standardizing-save-percentage-numbers-to-look-for-differences">Standardizing Save Percentage Numbers to look for Differences</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>final_decades <span class="sc">|&gt;</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">std_sv_pct =</span> <span class="fu">scale</span>(avg_sv_pct)) <span class="sc">|&gt;</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(decade, std_sv_pct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 2
+  decade std_sv_pct[,1]
+   &lt;dbl&gt;          &lt;dbl&gt;
+1   1950          0.677
+2   1960          0.617
+3   1970         -0.727
+4   1980         -2.07 
+5   1990         -0.311
+6   2000          0.506
+7   2010          0.937
+8   2020          0.366</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>art_ross <span class="sc">|&gt;</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(pts)) <span class="sc">|&gt;</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, Winner, pts) <span class="do">## used this to look at the dataframe to see how many high scoring seasons were in the 80s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 68 × 3
+    year Winner          pts
+   &lt;int&gt; &lt;chr&gt;         &lt;int&gt;
+ 1  1985 Wayne Gretzky   215
+ 2  1981 Wayne Gretzky   212
+ 3  1984 Wayne Gretzky   208
+ 4  1983 Wayne Gretzky   205
+ 5  1988 Mario Lemieux   199
+ 6  1982 Wayne Gretzky   196
+ 7  1986 Wayne Gretzky   183
+ 8  1987 Mario Lemieux   168
+ 9  1980 Wayne Gretzky   164
+10  1990 Wayne Gretzky   163
+# ℹ 58 more rows</code></pre>
+</div>
+</div>
+<section id="reading-leading-goalscorers-names" class="level4">
+<h4 class="anchored" data-anchor-id="reading-leading-goalscorers-names">Reading Leading Goalscorers’ Names</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> <span class="fu">as.character</span>(<span class="dv">1955</span><span class="sc">:</span><span class="dv">2023</span>)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>years <span class="ot">=</span> years[years <span class="sc">!=</span> <span class="st">"2005"</span>]</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>leader_name <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>,<span class="fu">length</span>(years))</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(years)){</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.sleep</span>(<span class="fl">5.5</span>) <span class="do">## slightly different, but idea is the same to avoid the site ban</span></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>  link4 <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">"https://www.hockey-reference.com/leagues/NHL_"</span>,years[i],<span class="st">".html"</span>)</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>  page <span class="ot">=</span> <span class="fu">read_html</span>(link4)</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>  season <span class="ot">=</span> page <span class="sc">|&gt;</span> </span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">"p"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text2</span>() </span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>leader <span class="ot">=</span> <span class="fu">str_subset</span>(season, <span class="st">"Goals Leaders: .+"</span>)</span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>clean <span class="ot">=</span> <span class="fu">str_replace_all</span>(leader, <span class="st">"</span><span class="sc">\\</span><span class="st">([^</span><span class="sc">\\</span><span class="st">)]+</span><span class="sc">\\</span><span class="st">)"</span> , <span class="st">""</span>) <span class="do">## same logic as the goal number but replacing any numbers and parentheses with space to leave just the name</span></span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>leader_name[i] <span class="ot">=</span> <span class="fu">str_extract</span>(clean, <span class="st">"(?&lt;=:</span><span class="sc">\\</span><span class="st">s).+"</span>)</span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a>name_df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">year =</span> years, <span class="at">leader_name =</span> leader_name)</span>
+<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a>name_df <span class="ot">=</span> name_df <span class="sc">|&gt;</span></span>
+<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">yearID =</span> <span class="fu">as.integer</span>(year)) </span>
+<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a>scoring_names <span class="ot">=</span> <span class="fu">left_join</span>(goal_df, name_df, <span class="at">by =</span> <span class="st">"yearID"</span>) <span class="do">## joining this set to the set with the goalscoring numbers to make it complete</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>scoring_names <span class="sc">|&gt;</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(yearID, goals_num, leader_name) <span class="sc">|&gt;</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(goals_num)) <span class="do">## organizing the leading scorer data set, inspecting for anything out of the ordinary</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   yearID goals_num                                     leader_name
+1    1982        92                                  Wayne Gretzky 
+2    1984        87                                  Wayne Gretzky 
+3    1991        86                                     Brett Hull 
+4    1989        85                                  Mario Lemieux 
+5    1971        76                                  Phil Esposito 
+6    1993        76              Alexander Mogilny , Teemu Selänne 
+7    1985        73                                  Wayne Gretzky 
+8    1990        72                                     Brett Hull 
+9    1983        71                                  Wayne Gretzky 
+10   1988        70                                  Mario Lemieux 
+11   1992        70                                     Brett Hull 
+12   1979        69                                     Mike Bossy 
+13   1996        69                                  Mario Lemieux 
+14   1974        68                                  Phil Esposito 
+15   1981        68                                     Mike Bossy 
+16   1986        68                                     Jari Kurri 
+17   1972        66                                  Phil Esposito 
+18   2008        65                                  Alex Ovechkin 
+19   2023        64                                 Connor McDavid 
+20   1987        62                                  Wayne Gretzky 
+21   1975        61                                  Phil Esposito 
+22   1976        61                                   Reggie Leach 
+23   1977        60                                    Steve Shutt 
+24   1978        60                                    Guy Lafleur 
+25   1994        60                                     Pavel Bure 
+26   2012        60                                 Steven Stamkos 
+27   2022        60                                Auston Matthews 
+28   2001        59                                     Pavel Bure 
+29   1969        58                                     Bobby Hull 
+30   2000        58                                     Pavel Bure 
+31   1980        56 Danny Gare , Charlie Simmer , Blaine Stoughton 
+32   2006        56                              Jonathan Cheechoo 
+33   2009        56                                  Alex Ovechkin 
+34   1973        55                                  Phil Esposito 
+35   1966        54                                     Bobby Hull 
+36   2015        53                                  Alex Ovechkin 
+37   1967        52                                     Bobby Hull 
+38   1997        52                                  Keith Tkachuk 
+39   1998        52                   Peter Bondra , Teemu Selänne 
+40   2002        52                                  Jarome Iginla 
+41   2007        52                             Vincent Lecavalier 
+42   2010        51                 Sidney Crosby , Steven Stamkos 
+43   2014        51                                  Alex Ovechkin 
+44   2019        51                                  Alex Ovechkin 
+45   1961        50                               Bernie Geoffrion 
+46   1962        50                                     Bobby Hull 
+47   2003        50                                   Milan Hejduk 
+48   2011        50                                    Corey Perry 
+49   2016        50                                  Alex Ovechkin 
+50   2018        49                                  Alex Ovechkin 
+51   2020        48                 Alex Ovechkin , David Pastrňák 
+52   1956        47                                  Jean Béliveau 
+53   1999        47                                  Teemu Selänne 
+54   1959        45                                  Jean Béliveau 
+55   1957        44                                    Gordie Howe 
+56   1968        44                                     Bobby Hull 
+57   2017        44                                  Sidney Crosby 
+58   1964        43                                     Bobby Hull 
+59   1970        43                                  Phil Esposito 
+60   1965        42                                    Norm Ullman 
+61   2004        41     Jarome Iginla , Ilya Kovalchuk , Rick Nash 
+62   2021        41                                Auston Matthews 
+63   1960        39                    Bronco Horvath , Bobby Hull 
+64   1955        38             Bernie Geoffrion , Maurice Richard 
+65   1963        38                                    Gordie Howe 
+66   1958        36                                   Dickie Moore 
+67   1995        34                                   Peter Bondra 
+68   2013        32                                  Alex Ovechkin </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>scoring_names_dec <span class="ot">=</span> scoring_names <span class="sc">|&gt;</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decade =</span> yearID <span class="sc">%/%</span> <span class="dv">10</span> <span class="sc">*</span> <span class="dv">10</span>) <span class="do">##decade-izing the above set</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="comparing-goalscoring-seasons-to-their-contemporaries" class="level4">
+<h4 class="anchored" data-anchor-id="comparing-goalscoring-seasons-to-their-contemporaries">Comparing Goalscoring Seasons to Their Contemporaries</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>scoring_names_dec <span class="sc">|&gt;</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(decade) <span class="sc">|&gt;</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">avg_goals =</span> <span class="fu">mean</span>(goals_num)) <span class="sc">|&gt;</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">goal_diff =</span> goals_num <span class="sc">-</span> avg_goals) <span class="sc">|&gt;</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(goal_diff, leader_name, goals_num, yearID, decade) <span class="sc">|&gt;</span></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(goal_diff)) <span class="do">## expectation by decade</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 68 × 5
+# Groups:   decade [8]
+   goal_diff leader_name                          goals_num yearID decade
+       &lt;dbl&gt; &lt;chr&gt;                                    &lt;int&gt;  &lt;int&gt;  &lt;dbl&gt;
+ 1      24.2 "Brett Hull "                               86   1991   1990
+ 2      18.8 "Wayne Gretzky "                            92   1982   1980
+ 3      14.2 "Alexander Mogilny , Teemu Selänne "        76   1993   1990
+ 4      14.1 "Phil Esposito "                            76   1971   1970
+ 5      13.8 "Wayne Gretzky "                            87   1984   1980
+ 6      11.8 "Mario Lemieux "                            85   1989   1980
+ 7      11   "Bobby Hull "                               58   1969   1960
+ 8      10.9 "Steven Stamkos "                           60   2012   2010
+ 9      10.8 "Connor McDavid "                           64   2023   2020
+10      10.7 "Alex Ovechkin "                            65   2008   2000
+# ℹ 58 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="comparing-all-seasons-to-one-number" class="level4">
+<h4 class="anchored" data-anchor-id="comparing-all-seasons-to-one-number">Comparing All Seasons to One Number</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>scoring_aex <span class="ot">=</span> scoring_names <span class="sc">|&gt;</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_gls =</span> <span class="fu">sum</span>(goals_num)) <span class="sc">|&gt;</span></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gls_expected =</span> total_gls<span class="sc">/</span><span class="dv">68</span>) <span class="sc">|&gt;</span></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gls_aex =</span> goals_num <span class="sc">-</span> gls_expected) <span class="sc">|&gt;</span></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(gls_aex)) <span class="sc">|&gt;</span></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gls_aex, yearID, goals_num, leader_name) </span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>scoring_aex <span class="do">## total expectation for all 68 seasons for leading goalscorers, ended up scrapping this idea</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   gls_aex yearID goals_num                                     leader_name
+1     35.5   1982        92                                  Wayne Gretzky 
+2     30.5   1984        87                                  Wayne Gretzky 
+3     29.5   1991        86                                     Brett Hull 
+4     28.5   1989        85                                  Mario Lemieux 
+5     19.5   1971        76                                  Phil Esposito 
+6     19.5   1993        76              Alexander Mogilny , Teemu Selänne 
+7     16.5   1985        73                                  Wayne Gretzky 
+8     15.5   1990        72                                     Brett Hull 
+9     14.5   1983        71                                  Wayne Gretzky 
+10    13.5   1988        70                                  Mario Lemieux 
+11    13.5   1992        70                                     Brett Hull 
+12    12.5   1979        69                                     Mike Bossy 
+13    12.5   1996        69                                  Mario Lemieux 
+14    11.5   1974        68                                  Phil Esposito 
+15    11.5   1981        68                                     Mike Bossy 
+16    11.5   1986        68                                     Jari Kurri 
+17     9.5   1972        66                                  Phil Esposito 
+18     8.5   2008        65                                  Alex Ovechkin 
+19     7.5   2023        64                                 Connor McDavid 
+20     5.5   1987        62                                  Wayne Gretzky 
+21     4.5   1975        61                                  Phil Esposito 
+22     4.5   1976        61                                   Reggie Leach 
+23     3.5   1977        60                                    Steve Shutt 
+24     3.5   1978        60                                    Guy Lafleur 
+25     3.5   1994        60                                     Pavel Bure 
+26     3.5   2012        60                                 Steven Stamkos 
+27     3.5   2022        60                                Auston Matthews 
+28     2.5   2001        59                                     Pavel Bure 
+29     1.5   1969        58                                     Bobby Hull 
+30     1.5   2000        58                                     Pavel Bure 
+31    -0.5   1980        56 Danny Gare , Charlie Simmer , Blaine Stoughton 
+32    -0.5   2006        56                              Jonathan Cheechoo 
+33    -0.5   2009        56                                  Alex Ovechkin 
+34    -1.5   1973        55                                  Phil Esposito 
+35    -2.5   1966        54                                     Bobby Hull 
+36    -3.5   2015        53                                  Alex Ovechkin 
+37    -4.5   1967        52                                     Bobby Hull 
+38    -4.5   1997        52                                  Keith Tkachuk 
+39    -4.5   1998        52                   Peter Bondra , Teemu Selänne 
+40    -4.5   2002        52                                  Jarome Iginla 
+41    -4.5   2007        52                             Vincent Lecavalier 
+42    -5.5   2010        51                 Sidney Crosby , Steven Stamkos 
+43    -5.5   2014        51                                  Alex Ovechkin 
+44    -5.5   2019        51                                  Alex Ovechkin 
+45    -6.5   1961        50                               Bernie Geoffrion 
+46    -6.5   1962        50                                     Bobby Hull 
+47    -6.5   2003        50                                   Milan Hejduk 
+48    -6.5   2011        50                                    Corey Perry 
+49    -6.5   2016        50                                  Alex Ovechkin 
+50    -7.5   2018        49                                  Alex Ovechkin 
+51    -8.5   2020        48                 Alex Ovechkin , David Pastrňák 
+52    -9.5   1956        47                                  Jean Béliveau 
+53    -9.5   1999        47                                  Teemu Selänne 
+54   -11.5   1959        45                                  Jean Béliveau 
+55   -12.5   1957        44                                    Gordie Howe 
+56   -12.5   1968        44                                     Bobby Hull 
+57   -12.5   2017        44                                  Sidney Crosby 
+58   -13.5   1964        43                                     Bobby Hull 
+59   -13.5   1970        43                                  Phil Esposito 
+60   -14.5   1965        42                                    Norm Ullman 
+61   -15.5   2004        41     Jarome Iginla , Ilya Kovalchuk , Rick Nash 
+62   -15.5   2021        41                                Auston Matthews 
+63   -17.5   1960        39                    Bronco Horvath , Bobby Hull 
+64   -18.5   1955        38             Bernie Geoffrion , Maurice Richard 
+65   -18.5   1963        38                                    Gordie Howe 
+66   -20.5   1958        36                                   Dickie Moore 
+67   -22.5   1995        34                                   Peter Bondra 
+68   -24.5   2013        32                                  Alex Ovechkin </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>scoring_names_dec <span class="sc">|&gt;</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(decade) <span class="sc">|&gt;</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">avg_goals =</span> <span class="fu">mean</span>(goals_num)) <span class="sc">|&gt;</span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">goal_diff =</span> goals_num <span class="sc">-</span> avg_goals) <span class="sc">|&gt;</span></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(decade, avg_goals) <span class="sc">|&gt;</span></span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">row_number</span>() <span class="sc">%%</span> <span class="dv">10</span> <span class="sc">==</span> <span class="dv">1</span>) <span class="do">## generating table of expected goals for the leader in each decade</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 2
+# Groups:   decade [8]
+  decade avg_goals
+   &lt;dbl&gt;     &lt;dbl&gt;
+1   1950      42  
+2   1960      47  
+3   1970      61.9
+4   1980      73.2
+5   1990      61.8
+6   2000      54.3
+7   2010      49.1
+8   2020      53.2</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(scoring_names, <span class="fu">aes</span>(<span class="at">x=</span> yearID, <span class="at">y =</span> goals_num)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span><span class="st">"Year"</span>, <span class="at">y =</span> <span class="st">"Goals Scored"</span>, <span class="at">title =</span> <span class="st">"Goals Scored by the NHL's Leading Goalscorer 1955-2023"</span>) <span class="do">## plot of goalscoring numbers</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="279-project_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="final-graph-and-data-table" class="level4">
+<h4 class="anchored" data-anchor-id="final-graph-and-data-table">Final Graph and Data Table</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>scoring_df <span class="ot">=</span> scoring_df <span class="sc">|&gt;</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">standard_diff =</span> avg_goals_standard <span class="sc">-</span> sv_pct_standard) </span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="do">## here I created a standarized difference variable to inspect the trends toward offense and/or defense in the NHL scoring numbers across the years</span></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(scoring_df, <span class="fu">aes</span>(<span class="at">x=</span> year_id)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span> standard_diff)) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x=</span> <span class="st">"Year"</span>, <span class="at">y =</span> <span class="st">"Standard Difference"</span>, <span class="at">title  =</span> <span class="st">"Standardized Difference Between Goalscoring and Goalie Performance in the NHL from 1955-2023"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="279-project_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>scoring_df <span class="sc">|&gt;</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(standard_diff)) <span class="sc">|&gt;</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year_id, standard_diff, avg_goals_standard, sv_pct_standard)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 68 × 4
+   year_id standard_diff[,1] avg_goals_standard[,1] sv_pct_standard[,1]
+     &lt;int&gt;             &lt;dbl&gt;                  &lt;dbl&gt;               &lt;dbl&gt;
+ 1    1981              4.59                   2.30               -2.29
+ 2    1985              4.27                   2.20               -2.07
+ 3    1983              4.10                   2.12               -1.98
+ 4    1984              3.97                   1.99               -1.98
+ 5    1982              3.89                   1.92               -1.98
+ 6    1980              3.62                   1.87               -1.75
+ 7    1988              3.39                   1.61               -1.78
+ 8    1986              3.08                   1.43               -1.65
+ 9    1987              3.03                   1.54               -1.49
+10    1989              3.01                   1.46               -1.55
+# ℹ 58 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="do">## the data set used for the graph</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
